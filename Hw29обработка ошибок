@@ -1,0 +1,46 @@
+import logging
+from typing import Dict, Union
+
+logging.basicConfig(
+    filename='error_log.log',
+    level=logging.ERROR,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
+def add(a: Union[int, float], b: Union[int, float]) -> Dict[str, Union[int, float]]:
+    try:
+        result = a + b
+        return {"operation": "addition", "result": result}
+    except Exception as e:
+        logging.error(f"Ошибка при сложении: {e}")
+        return {"error": str(e)}
+
+def subtract(a: Union[int, float], b: Union[int, float]) -> Dict[str, Union[int, float]]:
+    try:
+        result = a - b
+        return {"operation": "subtraction", "result": result}
+    except Exception as e:
+        logging.error(f"Ошибка при вычитании: {e}")
+        return {"error": str(e)}
+
+def multiply(a: Union[int, float], b: Union[int, float]) -> Dict[str, Union[int, float]]:
+    try:
+        result = a * b
+        return {"operation": "multiplication", "result": result}
+    except Exception as e:
+        logging.error(f"Ошибка при умножении: {e}")
+        return {"error": str(e)}
+
+print(add(5, 3))
+print(subtract(10, 4))
+print(multiply(7, 6))
+print(add("five", 3))
+
+
+unsupported operand type(s) for +: 'str' and 'int'
+
+
+
+
+
+
